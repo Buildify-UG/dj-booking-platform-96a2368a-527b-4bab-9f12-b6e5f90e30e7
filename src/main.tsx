@@ -3,6 +3,15 @@ import App from './App.tsx'
 import './index.css'
 import ErrorBoundary from './components/ErrorBoundary.tsx';
 
+// Register service worker for PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      // Service worker registration failed, app still works
+    });
+  });
+}
+
 createRoot(document.getElementById("root")!).render(
     <ErrorBoundary>
         <App />

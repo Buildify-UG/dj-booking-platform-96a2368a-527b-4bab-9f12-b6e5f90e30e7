@@ -92,38 +92,52 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 pb-safe">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Music className="w-8 h-8 text-purple-600" />
-            <h1 className="text-2xl font-bold text-slate-900">DJ Booking Hub</h1>
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 pt-safe">
+        <div className="max-w-7xl mx-auto px-3 md:px-4 py-3 md:py-4">
+          <div className="flex items-center justify-between mb-3 md:mb-0">
+            <div className="flex items-center gap-2 md:gap-3">
+              <Music className="w-6 md:w-8 h-6 md:h-8 text-purple-600" />
+              <h1 className="text-lg md:text-2xl font-bold text-slate-900">DJ Booking</h1>
+            </div>
           </div>
-          <div className="flex gap-2">
-            <Button variant={activeTab === 'browse' ? 'default' : 'outline'} onClick={() => setActiveTab('browse')}>
-              Browse DJs
+          <div className="flex gap-1 md:gap-2 flex-wrap">
+            <Button 
+              variant={activeTab === 'browse' ? 'default' : 'outline'} 
+              onClick={() => setActiveTab('browse')}
+              className="text-xs md:text-sm"
+            >
+              Browse
             </Button>
-            <Button variant={activeTab === 'quotations' ? 'default' : 'outline'} onClick={() => setActiveTab('quotations')}>
-              Quotations
+            <Button 
+              variant={activeTab === 'quotations' ? 'default' : 'outline'} 
+              onClick={() => setActiveTab('quotations')}
+              className="text-xs md:text-sm"
+            >
+              Quotes
             </Button>
-            <Button variant={activeTab === 'admin' ? 'default' : 'outline'} onClick={() => setActiveTab('admin')}>
+            <Button 
+              variant={activeTab === 'admin' ? 'default' : 'outline'} 
+              onClick={() => setActiveTab('admin')}
+              className="text-xs md:text-sm"
+            >
               Admin
             </Button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="max-w-7xl mx-auto px-3 md:px-4 py-4 md:py-8">
         {/* Browse DJs Tab */}
         {activeTab === 'browse' && (
-          <div className="space-y-8">
+          <div className="space-y-4 md:space-y-8">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-2">Available DJs & Sound Systems</h2>
-              <p className="text-slate-600">Browse and book professional DJs for your event</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-1 md:mb-2">Available DJs</h2>
+              <p className="text-sm md:text-base text-slate-600">Browse and book professional DJs for your event</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
               {adminDJs.map(dj => (
                 <Card key={dj.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <img src={dj.image} alt={dj.name} className="w-full h-48 object-cover" />
